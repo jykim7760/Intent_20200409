@@ -17,40 +17,64 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-fun setupEvents(){
+fun setupEvents() {
     dialBtn.setOnClickListener {
 
-//        입력한 번호로 전화를 걸도록 직접 코드 수정
+        //        입력한 번호로 전화를 걸도록 직접 코드 수정
 //
 //        val myUri = Uri.parse(Intent.ACTION_DIAL, callBtn)
 //        val myIntent = Intent(Intent.ACTION_DIAL, myUri)
 //
-val inputPhoneNum = phoneNumEdt.text.toString()
-
 
 
 //        어느 화면으로 갈지 명시 -> uri를 이용해서 명시
-        val myUri = Uri.parse("inputPhoneNum")
-        val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+        val myuri = Uri.parse("inputPhoneNum")
+        val myIntent = Intent(Intent.ACTION_DIAL, myuri)
         startActivity(myIntent)
 
 
         calllBtn.setOnClickListener {
 
-            val myUri = Uri.parse("tel:01099237760")
-            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+            val myuri = Uri.parse("tel:01099237760")
+            val myIntent = Intent(Intent.ACTION_DIAL, myuri)
             startActivity(myIntent)
 
+            val inputPhoneNum = phoneNumEdt.text.toString()
 
         }
+    }
 
+    smsBtn.setOnClickListener {
+
+        val myUri = Uri.parse("smsto:01099237760")
+        val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+        myIntent.putExtra("sms_body", "자동내용입력")
+
+        startActivity(myIntent)
+
+    }
+
+    naver.setOnClickListener {
+
+        val myUri = Uri.parse("https://naver.com")
+        val myIntent = Intent(Intent.ACTION_VIEW, myUri)
+//            myIntent.putExtra("sms_body", "자동내용입력")
+
+        startActivity(myIntent)
     }
 
 
 
-}
+        naver.setOnClickListener {
+
+            val myUri = Uri.parse("maket://details?id=com.kakao.talk")
+            val myIntent = Intent(Intent.ACTION_VIEW, myUri)
+//            myIntent.putExtra("sms_body", "자동내용입력")
+
+            startActivity(myIntent)
+
+        }
 
 
 
 
-}
