@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 fun setupEvents(){
-    dialBTN.setOnClickListener {
+    dialBtn.setOnClickListener {
 
 //        입력한 번호로 전화를 걸도록 직접 코드 수정
 //
@@ -30,10 +30,19 @@ val inputPhoneNum = phoneNumEdt.text.toString()
 
 
 //        어느 화면으로 갈지 명시 -> uri를 이용해서 명시
-        val myUri = Uri.parse("tel:01099237760")
+        val myUri = Uri.parse("inputPhoneNum")
         val myIntent = Intent(Intent.ACTION_DIAL, myUri)
         startActivity(myIntent)
 
+
+        calllBtn.setOnClickListener {
+
+            val myUri = Uri.parse("tel:01099237760")
+            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+            startActivity(myIntent)
+
+
+        }
 
     }
 
